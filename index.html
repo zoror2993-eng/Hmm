@@ -1,0 +1,343 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <style>
+        /* Soft, calming dark theme */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #12161a;
+            color: #e0e5eb;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #1a2126;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Smooth fading blocks */
+        .block {
+            display: none;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .block.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-weight: 400;
+            color: #b9cde3;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        /* Buttons & Inputs */
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            background: #252f38;
+            border: 1px solid #384754;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: #8fa0b0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .error-msg {
+            color: #ff7676;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 28px;
+            background: #2e3d4a;
+            border: none;
+            border-radius: 8px;
+            color: #e0e5eb;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #3e5263;
+        }
+
+        /* Bhajan List Styling */
+        .bhajan-list {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .bhajan-item {
+            background: #232d36;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bhajan-title {
+            font-size: 1rem;
+            color: #b9cde3;
+        }
+
+        .audio-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .audio-controls button {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        /* Gallery Grid Styling */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- BLOCK 1: Password Gate -->
+    <div id="block1" class="block active">
+        <h2>Welcome</h2>
+        <input type="text" id="passwordInput" placeholder="Enter password...">
+        <div class="hint">Hint: "Thume kya lag raha hai "</div>
+        <button onclick="checkPassword()">Submit</button>
+        <div id="errorMsg" class="error-msg">Incorrect password. Try again.</div>
+    </div>
+
+    <!-- BLOCK 2: Prompt Layout -->
+    <div id="block2" class="block">
+        <h2>Wanna see what's next?</h2>
+        <div class="btn-container">
+            <button onclick="showBlock(3)">Next</button>
+        </div>
+    </div>
+
+    <!-- BLOCK 3: Poetic Message -->
+    <div id="block3" class="block">
+        <h2>A Moment of Calm</h2>
+        <p style="text-align: left; white-space: pre-line;">
+            Sometimes, the world gets too loud, and the weight we carry from the past makes it hard to see the quiet beauty around us. I know things haven’t been easy, and I know how deeply you guard your peace now.
+
+            I don't want to ask for anything, nor do I want to take up your time. My only wish—the only thing I truly want—is to see you happy. Not weighed down, not sad. Just peaceful.
+
+            Ik ki guilt kis liye ho raha , as u told everything , ab wo soch ke tum Khud aajib si regret mei nhi rehe sakti na , Be really happy not just pretend , and if u have feelings for him u should be happy because agar thume wo back chahiye to swarthi to tum hogi ( maine agar likha hai) , and mei bolu to sara guilt Madhav ko de do , aache samay mei wo thumare sath hote hai to bure samay mei kyu nhi , akele guilt mat jhelo , unko pura de do.. Fir dekhna magic..
+
+            <span style="display: block; text-align: center; margin-top: 20px; font-style: italic; color: #b9cde3;">Jai gaur shri radharamano vijayate</span>
+        </p>
+        <div class="btn-container">
+            <button onclick="showBlock(2)">Return</button>
+            <button onclick="showBlock(4)">Next</button>
+        </div>
+    </div>
+
+    <!-- BLOCK 4: Music Playlists -->
+    <div id="block4" class="block">
+        <h2>Now be happy</h2>
+        <p style="font-size: 0.95rem; color: #8fa0b0;">These are some of my most fav bhajans u may listen...</p>
+        
+        <div class="bhajan-list">
+            <!-- Track 1 -->
+            <div class="bhajan-item">
+                <span class="bhajan-title">1. Wo Shri Radha Rani Hai</span>
+                <audio id="bhajan1" src="1 -Sri Radha rani.mp3" preload="auto"></audio>
+                <div class="audio-controls">
+                    <button onclick="playBhajan('bhajan1')">Play</button>
+                    <button onclick="muteBhajan('bhajan1')">Mute/Unmute</button>
+                </div>
+            </div>
+
+            <!-- Track 2 -->
+            <div class="bhajan-item">
+                <span class="bhajan-title">2. Radha Gori Gori</span>
+                <audio id="bhajan2" src="2- Radha gori.mp3" preload="auto"></audio>
+                <div class="audio-controls">
+                    <button onclick="playBhajan('bhajan2')">Play</button>
+                    <button onclick="muteBhajan('bhajan2')">Mute/Unmute</button>
+                </div>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="bhajan-item">
+                <span class="bhajan-title">3. Mai Bairagan</span>
+                <audio id="bhajan3" src="3-Mai Bairagan.mp3" preload="auto"></audio>
+                <div class="audio-controls">
+                    <button onclick="playBhajan('bhajan3')">Play</button>
+                    <button onclick="muteBhajan('bhajan3')">Mute/Unmute</button>
+                </div>
+            </div>
+
+            <!-- Track 4 -->
+            <div class="bhajan-item">
+                <span class="bhajan-title">4. Mero Mann Vrindavan Mein Atko</span>
+                <audio id="bhajan4" src="4- Mero Mann Vrindavan Mein Atko .mp3" preload="auto"></audio>
+                <div class="audio-controls">
+                    <button onclick="playBhajan('bhajan4')">Play</button>
+                    <button onclick="muteBhajan('bhajan4')">Mute/Unmute</button>
+                </div>
+            </div>
+
+            <!-- Track 5 -->
+            <div class="bhajan-item">
+                <span class="bhajan-title">5. Radha Ramanam Hare Hare</span>
+                <audio id="bhajan5" src="5-Radha Ramanam Hare Hare.mp3" preload="auto"></audio>
+                <div class="audio-controls">
+                    <button onclick="playBhajan('bhajan5')">Play</button>
+                    <button onclick="muteBhajan('bhajan5')">Mute/Unmute</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button onclick="stopAllBhajans(); showBlock(3);">Return</button>
+            <button onclick="showBlock(5)">Next</button>
+        </div>
+    </div>
+
+    <!-- BLOCK 5: Dedicated Gallery View -->
+    <div id="block5" class="block">
+        <h2>Sri Radharaman Lala</h2>
+        <p style="font-size: 0.95rem; color: #8fa0b0;">Darshan</p>
+        
+        <div class="gallery">
+            <img src="Raman1.jpg" alt="Sri Radharaman Lala Darshan">
+            <img src="Raman2.jpg" alt="Sri Radharaman Lala Darshan">
+            <img src="Raman3.jpg" alt="Sri Radharaman Lala Darshan">
+            <img src="Raman4.jpg" alt="Sri Radharaman Lala Darshan">
+            <img src="Raman5.jpg" alt="Sri Radharaman Lala Darshan">
+            <img src="Raman6.jpg" alt="Sri Radharaman Lala Darshan">
+        </div>
+
+        <div class="btn-container" style="margin-top: 35px;">
+            <button onclick="showBlock(4)">Return</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Allowed Passwords List
+    const ALLOWED_PASSWORDS = ["Master", "master", "Priyanshi", "priyanshi", "Chudail", "chudail"];
+
+    // Validation Logic
+    function checkPassword() {
+        const input = document.getElementById('passwordInput').value.trim();
+        const error = document.getElementById('errorMsg');
+        
+        if (ALLOWED_PASSWORDS.includes(input)) {
+            error.style.display = 'none';
+            showBlock(2);
+        } else {
+            error.style.display = 'block';
+        }
+    }
+
+    // Navigation Handler
+    function showBlock(blockNumber) {
+        const blocks = document.querySelectorAll('.block');
+        blocks.forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(`block${blockNumber}`).classList.add('active');
+    }
+
+    // Audio Execution (Allows only one track to run at a time)
+    function playBhajan(id) {
+        const targetAudio = document.getElementById(id);
+        
+        if (!targetAudio.paused) {
+            targetAudio.pause();
+            return;
+        }
+
+        stopAllBhajans();
+
+        targetAudio.play().catch(error => {
+            console.log("Audio playback interaction handler:", error);
+        });
+    }
+
+    function muteBhajan(id) {
+        const audio = document.getElementById(id);
+        audio.muted = !audio.muted;
+    }
+
+    function stopAllBhajans() {
+        const allAudio = document.querySelectorAll('audio');
+        allAudio.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    }
+</script>
+
+</body>
+</html>
